@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jedi or Sith</title>
+    <title>Random Background Color</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
     </style>
 </head>
@@ -20,6 +17,7 @@
         function setRandomBackgroundColor() {
             const colors = ['green', 'red'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
         }
 
         // Call the function when the page loads
