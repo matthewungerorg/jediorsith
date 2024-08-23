@@ -8,7 +8,7 @@
         body {
             margin: 0;
             height: 100vh;
-            transition: background-color 3s ease;
+            transition: background-color 2s ease;
         }
     </style>
 </head>
@@ -28,8 +28,8 @@
 
         // Call the function when the page loads
         window.onload = function() {
-            setRandomBackgroundColor();
-            setTimeout(fadeToWhite, 5000); // Fade to white after 5 seconds
+            setTimeout(setRandomBackgroundColor, 3000); // Wait 3 seconds before setting the initial color
+            setTimeout(fadeToWhite, 8000); // Fade to white 5 seconds after the initial color is set
         };
     </script>
 </body>
