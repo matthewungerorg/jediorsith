@@ -8,17 +8,28 @@
         body {
             margin: 0;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             transition: background-color 2s ease;
+        }
+        #message, #quote {
+            font-size: 2em;
+            opacity: 0;
+            transition: opacity 2s ease;
         }
     </style>
 </head>
 <body>
+    <div id="message">Your destiny awaits...</div>
+    <div id="quote"></div>
     <script>
         // Function to randomly set the background color
         function setRandomBackgroundColor() {
             const colors = ['green', 'red'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             document.body.style.backgroundColor = randomColor;
+            return randomColor;
         }
 
         // Function to fade the background color to white
@@ -26,10 +37,38 @@
             document.body.style.backgroundColor = 'white';
         }
 
-        // Call the function when the page loads
+        // Function to fade in the message
+        function fadeInMessage() {
+            document.getElementById('message').style.opacity = 1;
+        }
+
+        // Function to fade out the message
+        function fadeOutMessage() {
+            document.getElementById('message').style.opacity = 0;
+        }
+
+        // Function to fade in the quote
+        function fadeInQuote(text) {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = text;
+            quoteElement.style.opacity = 1;
+        }
+
+        // Call the functions when the page loads
         window.onload = function() {
-            setTimeout(setRandomBackgroundColor, 2000); // Wait 2 seconds before setting the initial color
-            setTimeout(fadeToWhite, 8000); // Fade to white 5 seconds after the initial color is set
+            fadeInMessage();
+            setTimeout(fadeOutMessage, 3000); // Fade out the message after 3 seconds
+            setTimeout(() => {
+                const color = setRandomBackgroundColor();
+                setTimeout(() => {
+                    fadeToWhite();
+                    if (color === 'green') {
+                        setTimeout(() => fadeInQuote("Do or do not. There is no try."), 2000); // Fade in the quote 2 seconds after fading to white
+                    } else if (color === 'red') {
+                        setTimeout(() => fadeInQuote("Peace is a lie."), 2000); // Fade in the quote 2 seconds after fading to white
+                    }
+                }, 5000); // Fade to white 5 seconds after the initial color is set
+            }, 5000); // Wait 5 seconds before setting the initial color
         };
     </script>
 </body>
