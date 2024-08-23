@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Background Color</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Function to randomly set the background color
+        function setRandomBackgroundColor() {
+            const colors = ['green', 'red'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+            document.body.innerText = `Background Color: ${randomColor}`;
+        }
+
+        // Call the function when the page loads
+        window.onload = setRandomBackgroundColor;
+    </script>
+</body>
+</html>
