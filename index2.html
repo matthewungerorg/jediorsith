@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destiny Awaits</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 1s;
+        }
+        .message {
+            font-size: 2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">Your destiny awaits...</div>
+    <script>
+        setTimeout(() => {
+            const isGreen = Math.random() < 0.5;
+            document.body.style.backgroundColor = isGreen ? 'green' : 'red';
+            setTimeout(() => {
+                if (isGreen) {
+                    document.body.style.backgroundColor = 'white';
+                    document.body.innerHTML = '<div class="message" style="color: green;">hello green</div>';
+                } else {
+                    document.body.style.backgroundColor = 'black';
+                    document.body.innerHTML = '<div class="message" style="color: red;">hello red</div>';
+                }
+            }, 4000);
+        }, 3000);
+    </script>
+</body>
+</html>
