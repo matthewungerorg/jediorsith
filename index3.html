@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jedi or Sith</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 1s;
+        }
+        .message {
+            font-size: 2em;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 2s;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">Your destiny awaits...</div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.message').classList.add('fade-out');
+            setTimeout(() => {
+                const isGreen = Math.random() < 0.5;
+                document.body.style.backgroundColor = isGreen ? 'green' : 'red';
+                document.body.innerHTML = ''; // Clear the message
+                setTimeout(() => {
+                    if (isGreen) {
+                        document.body.style.backgroundColor = 'white';
+                        document.body.innerHTML = '<div class="message" style="color: green;">There is no emotion, only peace.</div>';
+                    } else {
+                        document.body.style.backgroundColor = 'black';
+                        document.body.innerHTML = '<div class="message" style="color: red;">Peace is a lie.</div>';
+                    }
+                }, 4000);
+            }, 2000); // Wait for the fade-out transition to complete
+        }, 3000);
+    </script>
+</body>
+</html>
