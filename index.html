@@ -20,6 +20,9 @@
             transition: opacity 2s ease;
             text-align: center;
         }
+        #quote {
+            background-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +71,11 @@
                     if (color === 'green') {
                         setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
                     } else if (color === 'red') {
-                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to white
+                        setTimeout(() => {
+                            const quoteElement = document.getElementById('quote');
+                            quoteElement.style.backgroundColor = 'black';
+                            fadeInQuote("Peace is a lie.", 'red');
+                        }, 2000); // Fade in the quote 2 seconds after fading to white
                     }
                 }, 5000); // Fade to white 5 seconds after the initial color is set
             }, 5000); // Wait 5 seconds before setting the initial color
