@@ -20,9 +20,6 @@
             transition: opacity 2s ease;
             text-align: center;
         }
-        #quote {
-            background-color: transparent;
-        }
     </style>
 </head>
 <body>
@@ -40,6 +37,11 @@
         // Function to fade the background color to white
         function fadeToWhite() {
             document.body.style.backgroundColor = 'white';
+        }
+
+        // Function to change the background color to black
+        function changeBackgroundColorToBlack() {
+            document.body.style.backgroundColor = 'black';
         }
 
         // Function to fade in the message
@@ -72,10 +74,9 @@
                         setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
                     } else if (color === 'red') {
                         setTimeout(() => {
-                            const quoteElement = document.getElementById('quote');
-                            quoteElement.style.backgroundColor = 'black';
+                            changeBackgroundColorToBlack();
                             fadeInQuote("Peace is a lie.", 'red');
-                        }, 2000); // Fade in the quote 2 seconds after fading to white
+                        }, 2000); // Change background to black and fade in the quote 2 seconds after fading to white
                     }
                 }, 5000); // Fade to white 5 seconds after the initial color is set
             }, 5000); // Wait 5 seconds before setting the initial color
