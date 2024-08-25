@@ -7,43 +7,80 @@
     <style>
         body {
             margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            transition: background-color 1s;
+            flex-direction: column;
+            transition: background-color 2s ease;
         }
-        .message {
+        #message, #quote {
             font-size: 2em;
-            text-align: center;
-            opacity: 1;
-            transition: opacity 2s;
-        }
-        .fade-out {
             opacity: 0;
+            transition: opacity 2s ease;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="message">Your destiny awaits...</div>
+    <div id="message">Your destiny awaits...</div>
+    <div id="quote"></div>
     <script>
-        setTimeout(() => {
-            document.querySelector('.message').classList.add('fade-out');
+        // Function to randomly set the background color
+        function setRandomBackgroundColor() {
+            const colors = ['green', 'red'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+            return randomColor;
+        }
+
+        // Function to fade the background color to white
+        function fadeToWhite() {
+            document.body.style.backgroundColor = 'white';
+        }
+
+        // Function to change the background color to black
+        function changeBackgroundColorToBlack() {
+            document.body.style.backgroundColor = 'black';
+        }
+
+        // Function to fade in the message
+        function fadeInMessage() {
+            document.getElementById('message').style.opacity = 1;
+        }
+
+        // Function to fade out the message
+        function fadeOutMessage() {
+            document.getElementById('message').style.opacity = 0;
+        }
+
+        // Function to fade in the quote
+        function fadeInQuote(text, color) {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = text;
+            quoteElement.style.color = color;
+            quoteElement.style.opacity = 1;
+        }
+
+        // Call the functions when the page loads
+        window.onload = function() {
+            fadeInMessage();
+            setTimeout(fadeOutMessage, 3000); // Fade out the message after 3 seconds
             setTimeout(() => {
-                const isGreen = Math.random() < 0.5;
-                document.body.style.backgroundColor = isGreen ? 'green' : 'red';
-                document.body.innerHTML = ''; // Clear the message
+                const color = setRandomBackgroundColor();
                 setTimeout(() => {
-                    if (isGreen) {
-                        document.body.style.backgroundColor = 'white';
-                        document.body.innerHTML = '<div class="message" style="color: green;">There is no emotion, only peace.</div>';
-                    } else {
-                        document.body.style.backgroundColor = 'black';
-                        document.body.innerHTML = '<div class="message" style="color: red;">Peace is a lie.</div>';
+                    if (color === 'green') {
+                        fadeToWhite();
+                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
+                    } else if (color === 'red') {
+                        setTimeout(() => {
+                            changeBackgroundColorToBlack();
+                            fadeInQuote("Peace is a lie.", 'red');
+                        }, 2000); // Change background to black and fade in the quote 2 seconds after fading to white
                     }
-                }, 4000);
-            }, 2000); // Wait for the fade-out transition to complete
-        }, 3000);
+                }, 5000); // Fade to white 5 seconds after the initial color is set
+            }, 5000); // Wait 5 seconds before setting the initial color
+        };
     </script>
 </body>
 </html>
