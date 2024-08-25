@@ -71,13 +71,13 @@
                 setTimeout(() => {
                     if (color === 'green') {
                         fadeToWhite();
-                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 1000); // Fade in the quote 1 second after fading to white
+                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
                     } else if (color === 'red') {
                         fadeToBlack();
-                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 1000); // Fade in the quote 1 second after fading to black
+                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to black
                     }
-                }, 4000); // Fade to white 4 seconds after the initial color is set
-            }, 4000); // Wait 4 seconds before setting the initial color
+                }, 5000); // Fade to white 5 seconds after the initial color is set
+            }, 5000); // Wait 5 seconds before setting the initial color
         };
     </script>
 </body>
