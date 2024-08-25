@@ -40,7 +40,7 @@
         }
 
         // Function to change the background color to black
-        function changeBackgroundColorToBlack() {
+        function fadeToBlack() {
             document.body.style.backgroundColor = 'black';
         }
 
@@ -73,10 +73,8 @@
                         fadeToWhite();
                         setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
                     } else if (color === 'red') {
-                        setTimeout(() => {
-                            changeBackgroundColorToBlack();
-                            fadeInQuote("Peace is a lie.", 'red');
-                        }, 2000); // Change background to black and fade in the quote 2 seconds after fading to white
+                        fadeToBlack();
+                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to black
                     }
                 }, 5000); // Fade to white 5 seconds after the initial color is set
             }, 5000); // Wait 5 seconds before setting the initial color
