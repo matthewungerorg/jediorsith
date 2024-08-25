@@ -28,7 +28,7 @@
     <script>
         // Function to randomly set the background color
         function setRandomBackgroundColor() {
-            const colors = ['green', 'blue'];
+            const colors = ['blue', 'red'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             document.body.style.backgroundColor = randomColor;
             return randomColor;
@@ -71,7 +71,7 @@
                 setTimeout(() => {
                     if (color === 'blue') {
                         fadeToWhite();
-                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'green'), 2000); // Fade in the quote 2 seconds after fading to white
+                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'blue'), 2000); // Fade in the quote 2 seconds after fading to white
                     } else if (color === 'red') {
                         fadeToBlack();
                         setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to black
