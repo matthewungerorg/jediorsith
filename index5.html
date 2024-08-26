@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jedi or Sith</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: background-color 2s ease;
+        }
+        #message, #quote {
+            font-size: 3em;
+            opacity: 0;
+            transition: opacity 2s ease;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Your destiny awaits</div>
+    <div id="quote"></div>
+    <script>
+        // Function to randomly set the background color
+        function setRandomBackgroundColor() {
+            const colors = ['blue', 'gray', 'red'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+            return randomColor;
+        }
+
+        // Function to fade the background color to white
+        function fadeToWhite() {
+            document.body.style.backgroundColor = 'white';
+        }
+
+ 		// Function to fade the background color to gray
+        function fadeToGray() {
+            document.body.style.backgroundColor = 'gray';
+        }
+
+        // Function to change the background color to black
+        function fadeToBlack() {
+            document.body.style.backgroundColor = 'black';
+        }
+
+        // Function to fade in the message
+        function fadeInMessage() {
+            document.getElementById('message').style.opacity = 1;
+        }
+
+        // Function to fade out the message
+        function fadeOutMessage() {
+            document.getElementById('message').style.opacity = 0;
+        }
+
+        // Function to fade in the quote
+        function fadeInQuote(text, color) {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = text;
+            quoteElement.style.color = color;
+            quoteElement.style.opacity = 1;
+        }
+
+        // Call the functions when the page loads
+        window.onload = function() {
+            fadeInMessage();
+            setTimeout(fadeOutMessage, 3000); // Fade out the message after 3 seconds
+            setTimeout(() => {
+                const color = setRandomBackgroundColor();
+                setTimeout(() => {
+                    if (color === 'blue') {
+                        fadeToWhite();
+                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'blue'), 2000); // Fade in the quote 2 seconds after fading to white
+                    } else if (color === 'gray') {
+                        fadeToGray();
+                        setTimeout(() => fadeInQuote("Flowing through all, there is balance.", 'gray'), 2000); // Fade in the quote 2 seconds after fading to gray
+                    } else if (color === 'red') {
+                        fadeToBlack();
+                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to black
+                    }
+                }, 4000); // Fade 4 seconds after the initial color is set
+            }, 5000); // Wait 5 seconds before setting the initial color
+        };
+    </script>
+</body>
+</html>
