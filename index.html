@@ -28,7 +28,7 @@
     <script>
         // Function to randomly set the background color
         function setRandomBackgroundColor() {
-            const colors = ['blue', 'red'];
+            const colors = ['dodgerblue', 'gray', 'firebrick'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             document.body.style.backgroundColor = randomColor;
             return randomColor;
@@ -37,6 +37,11 @@
         // Function to fade the background color to white
         function fadeToWhite() {
             document.body.style.backgroundColor = 'white';
+        }
+
+ 		// Function to fade the background color to gray
+        function fadeToGray() {
+            document.body.style.backgroundColor = 'gray';
         }
 
         // Function to change the background color to black
@@ -69,12 +74,15 @@
             setTimeout(() => {
                 const color = setRandomBackgroundColor();
                 setTimeout(() => {
-                    if (color === 'blue') {
+                    if (color === 'dodgerblue') {
                         fadeToWhite();
-                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'blue'), 2000); // Fade in the quote 2 seconds after fading to white
-                    } else if (color === 'red') {
+                        setTimeout(() => fadeInQuote("There is no emotion, there is peace.", 'dodgerblue'), 2000); // Fade in the quote 2 seconds after fading to white
+                    } else if (color === 'gray') {
+                        fadeToGray();
+                        setTimeout(() => fadeInQuote("Flowing through all, there is balance.", 'lightgray'), 1000); // Fade in the quote 1 second after fading to gray
+                    } else if (color === 'firebrick') {
                         fadeToBlack();
-                        setTimeout(() => fadeInQuote("Peace is a lie.", 'red'), 2000); // Fade in the quote 2 seconds after fading to black
+                        setTimeout(() => fadeInQuote("Peace is a lie.", 'firebrick'), 2000); // Fade in the quote 2 seconds after fading to black
                     }
                 }, 4000); // Fade 4 seconds after the initial color is set
             }, 5000); // Wait 5 seconds before setting the initial color
